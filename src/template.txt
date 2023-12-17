@@ -1,0 +1,27 @@
+advent_of_code::solution!(%YEAR%, %DAY%);
+
+pub fn part_one(_input: &str) -> Option<u32> {
+    None
+}
+
+pub fn part_two(_input: &str) -> Option<u32> {
+    None
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use advent_of_code::commands::read_example;
+
+    #[test]
+    fn example_part_one() {
+        let result = part_one(&read_example(YEAR, DAY, 1));
+        assert_eq!(result, None);
+    }
+
+    #[test]
+    fn example_part_two() {
+        let result = part_two(&read_example(YEAR, DAY, 1));
+        assert_eq!(result, None);
+    }
+}

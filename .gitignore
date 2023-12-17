@@ -1,0 +1,14 @@
+# Rust & cargo
+/target
+/debug
+**/*.rs.bk
+*.pdb
+
+# AoC inputs & examples
+data/inputs/*
+!data/inputs/*.gitkeep
+data/examples/*
+!data/examples/*.gitkeep
+
+# AoC cookie
+.adventofcode.session

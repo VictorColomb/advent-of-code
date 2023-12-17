@@ -1,0 +1,15 @@
+[package]
+name = "advent_of_code"
+version = "0.1.0"
+authors = ["Victor Colomb"]
+edition = "2021"
+default-run = "advent_of_code"
+
+[lib]
+doctest = false
+
+[dependencies]
+aoc-client = "0.2.0"
+chrono = "0.4.31"
+clap = { version = "4.4.11", features=["derive", "env"] }
+num = "0.4.1"
