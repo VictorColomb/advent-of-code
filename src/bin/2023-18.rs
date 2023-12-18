@@ -24,7 +24,7 @@ fn parse_input1(input: &str) -> Vec<DigInstruction> {
         let length = parts.next().unwrap();
 
         dig_instructions.push(DigInstruction {
-            direction: direction,
+            direction,
             length: length.parse().unwrap(),
         });
     }

@@ -1,4 +1,4 @@
-use std::fs::{OpenOptions, create_dir_all, File};
+use std::fs::{create_dir_all, File, OpenOptions};
 use std::io::Write;
 use std::path::Path;
 use std::process;
@@ -15,7 +15,7 @@ fn create_file_and_dirs(path: &str) -> Result<File, std::io::Error> {
 }
 
 pub fn handle(year: u16, day: Day) {
-    let input = match get_input(year.into(), day.into()) {
+    let input = match get_input(year, day) {
         Ok(input) => input,
         Err(e) => {
             eprintln!("🫎 Failed to download input: {}", e);
@@ -29,7 +29,7 @@ pub fn handle(year: u16, day: Day) {
         Err(e) => {
             eprintln!("🫎 Failed to write to input file: {}", e);
             process::exit(1);
-        },
+        }
     }
 
     println!("🎄 Downloaded input into file: {}", input_file);

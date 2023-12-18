@@ -33,6 +33,6 @@ fn read_file(folder: &str, year: u16, day: Day, part: Option<u8>) -> String {
         Err(e) => {
             eprintln!("🫎 Could not open input file: {}", e);
             std::process::exit(1);
-        },
+        }
     }
 }

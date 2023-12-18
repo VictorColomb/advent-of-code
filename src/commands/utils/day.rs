@@ -1,7 +1,7 @@
-use std::{fmt::Display, error::Error};
 use std::str::FromStr;
+use std::{error::Error, fmt::Display};
 
-use chrono::{Local, Datelike};
+use chrono::{Datelike, Local};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct Day(u8);
@@ -9,7 +9,7 @@ pub struct Day(u8);
 impl Day {
     /// Creates a new [`Day`] from a [`u8`], but returns [`None`] if the value is not in the range 1..=25.
     pub fn new(day: u8) -> Option<Self> {
-        if day < 1 || day > 25 {
+        if !(1..=25).contains(&day) {
             None
         } else {
             Some(Self(day))
@@ -40,15 +40,15 @@ impl Day {
     }
 }
 
-impl Into<u8> for Day {
-    fn into(self) -> u8 {
-        self.0
+impl From<Day> for u8 {
+    fn from(day: Day) -> u8 {
+        day.0
     }
 }
 
-impl Into<u32> for Day {
-    fn into(self) -> u32 {
-        self.0.into()
+impl From<Day> for u32 {
+    fn from(day: Day) -> u32 {
+        day.0.into()
     }
 }
 

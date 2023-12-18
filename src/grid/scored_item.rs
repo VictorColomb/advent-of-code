@@ -27,30 +27,12 @@ mod tests {
     #[test]
     fn test_scored_item() {
         let mut heap = BinaryHeap::new();
-        heap.push(ScoredItem {
-            item: 1,
-            score: 1,
-        });
-        heap.push(ScoredItem {
-            item: 2,
-            score: 1,
-        });
-        heap.push(ScoredItem {
-            item: 3,
-            score: -2,
-        });
-        heap.push(ScoredItem {
-            item: 4,
-            score: 4,
-        });
-        heap.push(ScoredItem {
-            item: 5,
-            score: 5,
-        });
-        heap.push(ScoredItem {
-            item: 6,
-            score: 6,
-        });
+        heap.push(ScoredItem { item: 1, score: 1 });
+        heap.push(ScoredItem { item: 2, score: 1 });
+        heap.push(ScoredItem { item: 3, score: -2 });
+        heap.push(ScoredItem { item: 4, score: 4 });
+        heap.push(ScoredItem { item: 5, score: 5 });
+        heap.push(ScoredItem { item: 6, score: 6 });
 
         assert_eq!(heap.pop().unwrap().item, 3);
         assert_eq!(heap.pop().unwrap().item, 1);

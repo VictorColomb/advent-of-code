@@ -52,5 +52,8 @@ fn run_release<I: Clone, T: Display>(func: impl Fn(I) -> Option<T>, input: I, da
     }
 
     let duration = std::time::Duration::from_nanos((total_time / nb_iter) as u64);
-    println!("\x1b[2K\r{} ({:.1?} @ {} samples)", result_str, duration, nb_iter);
+    println!(
+        "\x1b[2K\r{} ({:.1?} @ {} samples)",
+        result_str, duration, nb_iter
+    );
 }

@@ -1,0 +1,15 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.5.0
+  hooks:
+    - id: check-toml
+    - id: mixed-line-ending
+      name: lf line endings
+      args: [--fix=lf]
+
+- repo: https://github.com/backplane/pre-commit-rust-hooks
+  rev: v1.1.0
+  hooks:
+    - id: fmt
+    - id: check
+    - id: clippy

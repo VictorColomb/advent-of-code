@@ -96,12 +96,12 @@ fn path(grid: &HashMap<Coordinate<i32>, i32>, min_move: i32, max_move: i32) -> i
 }
 
 pub fn part_one(input: &str) -> Option<i32> {
-    let grid = parse_grid::<i32, i32>(&input);
+    let grid = parse_grid::<i32, i32>(input);
     Some(path(&grid, 0, 3))
 }
 
 pub fn part_two(input: &str) -> Option<i32> {
-    let grid = parse_grid::<i32, i32>(&input);
+    let grid = parse_grid::<i32, i32>(input);
     Some(path(&grid, 4, 10))
 }
 

@@ -31,7 +31,7 @@ pub fn handle(year: u16, day: Day, download: bool) {
     let example_file = format!("data/examples/{}/{}-1.txt", year, day);
 
     // Create the module directory if it doesn't exist.
-    create_dir_all(&module_dir).unwrap_or_else(|e| {
+    create_dir_all(module_dir).unwrap_or_else(|e| {
         eprintln!("🫎 Failed to create module directory: {}", e);
         process::exit(1);
     });
