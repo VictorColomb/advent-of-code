@@ -25,8 +25,8 @@ fn create_file_and_dirs(path: &str) -> Result<File, std::io::Error> {
 }
 
 pub fn handle(year: u16, day: Day, download: bool) {
-    let module_dir = "src/bin";
-    let module_file = format!("{}/{}-{}.rs", module_dir, year, day);
+    let module_dir = format!("src/bin/{}-{}", year, day);
+    let module_file = format!("{}/main.rs", module_dir);
     let input_file = format!("data/inputs/{}/{}.txt", year, day);
     let example_file = format!("data/examples/{}/{}-1.txt", year, day);
 
