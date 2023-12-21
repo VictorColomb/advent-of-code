@@ -14,6 +14,13 @@ pub enum Direction {
 }
 
 impl Direction {
+    /// Returns an iterator over all possible directions
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::North, Self::South, Self::East, Self::West]
+            .iter()
+            .copied()
+    }
+
     /// Rotate the direction clockwise
     pub fn rotate_cw(self) -> Self {
         match self {

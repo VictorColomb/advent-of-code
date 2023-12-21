@@ -1,4 +1,4 @@
-use num::Integer;
+use num::{Integer, Num};
 use std::{
     cmp::Ordering,
     fmt::Display,
@@ -51,6 +51,31 @@ impl<T: SubAssign> SubAssign for Coordinate<T> {
     fn sub_assign(&mut self, other: Self) {
         self.x -= other.x;
         self.y -= other.y;
+    }
+}
+
+impl<T: Num> Add<Direction> for Coordinate<T> {
+    type Output = Coordinate<T>;
+
+    fn add(self, rhs: Direction) -> Self::Output {
+        match rhs {
+            Direction::North => Coordinate {
+                x: self.x,
+                y: self.y - T::one(),
+            },
+            Direction::South => Coordinate {
+                x: self.x,
+                y: self.y + T::one(),
+            },
+            Direction::East => Coordinate {
+                x: self.x + T::one(),
+                y: self.y,
+            },
+            Direction::West => Coordinate {
+                x: self.x - T::one(),
+                y: self.y,
+            },
+        }
     }
 }
 
