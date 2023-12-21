@@ -1,6 +1,6 @@
 use std::{collections::HashMap, vec};
 
-advent_of_code::solution!(2023, 19, 2);
+advent_of_code::solution!(2023, 19);
 
 struct WorkflowStep {
     category: char,
@@ -59,7 +59,7 @@ fn parse(input: &str) -> (HashMap<String, Workflow>, Vec<HashMap<char, u64>>) {
     let mut workflows: HashMap<String, Workflow> = HashMap::new();
     for w in workflows_input.split('\n') {
         let (name, rest) = w.split_once('{').unwrap();
-        let steps_input = rest.trim_end_matches('}').split(",").collect::<Vec<_>>();
+        let steps_input = rest.trim_end_matches('}').split(',').collect::<Vec<_>>();
         let (end, steps_input) = steps_input.split_last().unwrap();
 
         let mut steps: Vec<WorkflowStep> = Vec::new();
@@ -94,10 +94,7 @@ fn parse(input: &str) -> (HashMap<String, Workflow>, Vec<HashMap<char, u64>>) {
         let mut dict = HashMap::new();
         for cat in p[1..p.len() - 1].split(',') {
             let (name, value) = cat.split_once('=').unwrap();
-            dict.insert(
-                name.chars().next().unwrap(),
-                u64::from_str_radix(value, 10).unwrap(),
-            );
+            dict.insert(name.chars().next().unwrap(), value.parse::<u64>().unwrap());
         }
 
         parts.push(dict);
@@ -156,9 +153,7 @@ pub fn part_two(input: &str) -> Option<u64> {
         step: 0,
         interval: [(1, 4000), (1, 4000), (1, 4000), (1, 4000)],
     }];
-    while !stack.is_empty() {
-        let state = stack.pop().unwrap();
-
+    while let Some(state) = stack.pop() {
         // Break condition
         match state.workflow.as_str() {
             "A" => {
@@ -208,15 +203,15 @@ pub fn part_two(input: &str) -> Option<u64> {
                         // Interval is split
                         let (left, right) = state.interval[idx].split(step.threshold).unwrap();
 
-                        let mut left_itv = state.interval.clone();
+                        let mut left_itv = state.interval;
                         left_itv[idx] = left;
                         stack.push(State {
-                            workflow: state.workflow.clone(),
+                            workflow: state.workflow,
                             step: state.step + 1,
                             interval: left_itv,
                         });
 
-                        let mut right_itv = state.interval.clone();
+                        let mut right_itv = state.interval;
                         right_itv[idx] = right;
                         stack.push(State {
                             workflow: step.dest_workflow.clone(),
@@ -244,7 +239,7 @@ pub fn part_two(input: &str) -> Option<u64> {
                         // Interval is split
                         let (left, right) = state.interval[idx].rev_split(step.threshold).unwrap();
 
-                        let mut left_itv = state.interval.clone();
+                        let mut left_itv = state.interval;
                         left_itv[idx] = left;
                         stack.push(State {
                             workflow: step.dest_workflow.clone(),
@@ -252,7 +247,7 @@ pub fn part_two(input: &str) -> Option<u64> {
                             interval: left_itv,
                         });
 
-                        let mut right_itv = state.interval.clone();
+                        let mut right_itv = state.interval;
                         right_itv[idx] = right;
                         stack.push(State {
                             workflow: state.workflow,
