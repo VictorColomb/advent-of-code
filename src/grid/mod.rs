@@ -1,7 +1,9 @@
 mod coordinate;
+mod coordinate3d;
 mod scored_item;
 
 pub use coordinate::Coordinate;
+pub use coordinate3d::Coordinate3D;
 pub use scored_item::ScoredItem;
 
 /// Cardinal directions
