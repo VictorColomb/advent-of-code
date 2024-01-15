@@ -1,4 +1,10 @@
-use std::{cmp::min, fmt::Display, hint::black_box, time::Instant};
+use std::{
+    cmp::{max, min},
+    fmt::Display,
+    hint::black_box,
+    io::{stdout, Write},
+    time::Instant,
+};
 
 use super::Day;
 
@@ -41,8 +47,9 @@ fn run_release<I: Clone, T: Display>(func: impl Fn(I) -> Option<T>, input: I, da
         None => format!("🎄 Day {} Part {}: None", day, part),
     };
     print!("{} | Benching...", result_str);
+    stdout().flush().unwrap();
 
-    let nb_iter = min(10000, 5_000_000_000 / base_time.as_nanos() as usize);
+    let nb_iter = max(3, min(10000, 5_000_000_000 / base_time.as_nanos() as usize));
     let mut total_time = 0;
     for _ in 0..nb_iter {
         let cloned = input.clone();

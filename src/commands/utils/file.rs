@@ -29,7 +29,7 @@ fn read_file(folder: &str, year: u16, day: Day, part: Option<u8>) -> String {
     let f = read_to_string(filepath);
 
     match f {
-        Ok(f) => f,
+        Ok(f) => f.trim_end_matches('\n').to_string(),
         Err(e) => {
             eprintln!("🫎 Could not open input file: {}", e);
             std::process::exit(1);
