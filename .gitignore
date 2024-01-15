@@ -12,3 +12,6 @@ data/examples/*
 
 # AoC cookie
 .adventofcode.session
+
+# IDE
+.vscode
