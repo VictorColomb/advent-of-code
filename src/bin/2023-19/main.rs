@@ -22,7 +22,6 @@ where
 {
     fn split(&self, value: u64) -> Option<(Self, Self)>;
     fn rev_split(&self, value: u64) -> Option<(Self, Self)>;
-    fn string(&self) -> String;
 }
 
 impl Split for Interval {
@@ -38,10 +37,6 @@ impl Split for Interval {
             return None;
         }
         Some(((self.0, value - 1), (value, self.1)))
-    }
-
-    fn string(&self) -> String {
-        format!("[{}, {}]", self.0, self.1)
     }
 }
 

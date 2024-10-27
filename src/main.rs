@@ -24,7 +24,6 @@ fn main() {
 
     match &args.command {
         Command::Scaffold { day, download } => {
-            dbg!(day.unwrap());
             scaffold::handle(year, day.unwrap_or_else(Day::today_safe), *download)
         }
         Command::Solve { day, release } => {

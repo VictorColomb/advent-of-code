@@ -11,7 +11,11 @@ fn create_file_and_dirs(path: &str) -> Result<File, std::io::Error> {
     if let Some(parent) = path.parent() {
         create_dir_all(parent)?;
     }
-    OpenOptions::new().write(true).create(true).open(path)
+    OpenOptions::new()
+        .write(true)
+        .create(true)
+        .truncate(true)
+        .open(path)
 }
 
 pub fn handle(year: u16, day: Day) {
