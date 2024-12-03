@@ -49,7 +49,7 @@ pub fn part_two(input: &str) -> Option<u32> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use advent_of_code::commands::read_example;
+    use advent_of_code::commands::{read_example, read_input};
 
     #[test]
     fn example_part_one() {
@@ -58,8 +58,20 @@ mod tests {
     }
 
     #[test]
+    fn input_part_one() {
+        let result = part_one(&read_input(YEAR, DAY));
+        assert_eq!(result, Some(1258579));
+    }
+
+    #[test]
     fn example_part_two() {
         let result = part_two(&read_example(YEAR, DAY, 1));
         assert_eq!(result, Some(31));
+    }
+
+    #[test]
+    fn input_part_two() {
+        let result = part_two(&read_input(YEAR, DAY));
+        assert_eq!(result, Some(23981443));
     }
 }
