@@ -53,7 +53,7 @@ pub fn handle(year: u16, day: Day, download: bool) {
         match file.write_all(
             MODULE_TEMPLATE
                 .replace("%YEAR%", &year.to_string())
-                .replace("%DAY%", &day.to_string())
+                .replace("%DAY%", &u8::from(day).to_string())
                 .as_bytes(),
         ) {
             Ok(_) => println!("🎄 Created module file: {}", module_file),
