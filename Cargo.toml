@@ -10,9 +10,9 @@ doctest = false
 
 [dependencies]
 aoc-client = "0.2.0"
-chrono = "0.4.31"
-clap = { version = "4.4.11", features=["derive", "env"] }
-num = "0.4.1"
+chrono = "0.4.38"
+clap = { version = "4.5.22", features=["derive", "env"] }
+num = "0.4.3"
 regex = "1.11.1"
 
 [profile.test]
