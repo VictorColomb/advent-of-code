@@ -5,7 +5,7 @@ use std::{
     ops::{Add, AddAssign, Sub, SubAssign},
 };
 
-use super::Direction;
+use super::{Direction, ExtendedDirection};
 
 #[derive(Debug, Copy, Clone, PartialEq, Eq, Hash)]
 pub struct Coordinate<T> {
@@ -74,6 +74,47 @@ impl<T: Num> Add<Direction> for Coordinate<T> {
             Direction::West => Coordinate {
                 x: self.x - T::one(),
                 y: self.y,
+            },
+        }
+    }
+}
+
+impl<T: Num> Add<ExtendedDirection> for Coordinate<T> {
+    type Output = Coordinate<T>;
+
+    fn add(self, rhs: ExtendedDirection) -> Self::Output {
+        match rhs {
+            ExtendedDirection::North => Coordinate {
+                x: self.x,
+                y: self.y - T::one(),
+            },
+            ExtendedDirection::South => Coordinate {
+                x: self.x,
+                y: self.y + T::one(),
+            },
+            ExtendedDirection::East => Coordinate {
+                x: self.x + T::one(),
+                y: self.y,
+            },
+            ExtendedDirection::West => Coordinate {
+                x: self.x - T::one(),
+                y: self.y,
+            },
+            ExtendedDirection::NorthEast => Coordinate {
+                x: self.x + T::one(),
+                y: self.y - T::one(),
+            },
+            ExtendedDirection::NorthWest => Coordinate {
+                x: self.x - T::one(),
+                y: self.y - T::one(),
+            },
+            ExtendedDirection::SouthEast => Coordinate {
+                x: self.x + T::one(),
+                y: self.y + T::one(),
+            },
+            ExtendedDirection::SouthWest => Coordinate {
+                x: self.x - T::one(),
+                y: self.y + T::one(),
             },
         }
     }

@@ -22,7 +22,7 @@ pub fn part_two(input: &str) -> Option<u32> {
     let re: Regex = Regex::new(r"do\(\)|don't\(\)|mul\([0-9]{1,3},[0-9]{1,3}\)").unwrap();
 
     for capture in re.captures_iter(input) {
-        match capture.get(0).unwrap().as_str().split_once("(").unwrap().0 {
+        match capture.get(0).unwrap().as_str().split_once('(').unwrap().0 {
             "do" => {
                 enabled = true;
             }
@@ -36,10 +36,10 @@ pub fn part_two(input: &str) -> Option<u32> {
 
                 let string = capture.get(0).unwrap().as_str();
                 let (left, right) = string[0..string.len() - 1]
-                    .split_once("(")
+                    .split_once('(')
                     .unwrap()
                     .1
-                    .split_once(",")
+                    .split_once(',')
                     .unwrap();
 
                 let left = left.parse::<u32>().unwrap();

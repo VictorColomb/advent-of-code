@@ -61,3 +61,60 @@ impl Direction {
         }
     }
 }
+
+/// Cardinal directions + diagonals
+#[derive(Debug, Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
+pub enum ExtendedDirection {
+    North,
+    South,
+    East,
+    West,
+    NorthEast,
+    NorthWest,
+    SouthEast,
+    SouthWest,
+}
+
+impl ExtendedDirection {
+    /// Returns an iterator over all possible directions
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [
+            Self::North,
+            Self::South,
+            Self::East,
+            Self::West,
+            Self::NorthEast,
+            Self::NorthWest,
+            Self::SouthEast,
+            Self::SouthWest,
+        ]
+        .iter()
+        .copied()
+    }
+
+    /// Returns an iterator over all possible diagonal directions
+    pub fn iter_diagonals() -> impl Iterator<Item = Self> {
+        [
+            Self::NorthEast,
+            Self::NorthWest,
+            Self::SouthEast,
+            Self::SouthWest,
+        ]
+        .iter()
+        .copied()
+    }
+
+    /// Opposite direction
+    pub fn opposite(self) -> Self {
+        match self {
+            Self::North => Self::South,
+            Self::East => Self::West,
+            Self::South => Self::North,
+            Self::West => Self::East,
+            Self::NorthEast => Self::SouthWest,
+            Self::NorthWest => Self::SouthEast,
+            Self::SouthEast => Self::NorthWest,
+            Self::SouthWest => Self::NorthEast,
+        }
+    }
+}
