@@ -1,7 +1,8 @@
 use std::collections::{BinaryHeap, HashMap};
 
 use advent_of_code::{
-    grid::{Coordinate, Direction, ScoredItem},
+    grid::{Coordinate, Direction},
+    misc::ScoredItem,
     parsing::parse_grid,
 };
 

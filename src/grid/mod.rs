@@ -1,10 +1,10 @@
 mod coordinate;
 mod coordinate3d;
-mod scored_item;
+mod sparse;
 
 pub use coordinate::Coordinate;
 pub use coordinate3d::Coordinate3D;
-pub use scored_item::ScoredItem;
+pub use sparse::SparseGrid;
 
 /// Cardinal directions
 #[derive(Debug, Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
